@@ -7,6 +7,8 @@ class UsersHelper:
 
     def create(self, users):
         wd = self.app.wd
+        # переход на страницу создания контакта
+        wd.find_element_by_link_text("add new").click()
         # fill in users form
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
