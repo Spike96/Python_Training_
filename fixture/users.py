@@ -4,11 +4,9 @@ class UsersHelper:
     def __init__(self, app):
         self.app = app
 
-
     def create(self, users):
         wd = self.app.wd
-        # переход на страницу создания контакта
-        wd.find_element_by_link_text("add new").click()
+        self.add_new_user()
         # fill in users form
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -25,11 +23,19 @@ class UsersHelper:
         # submit user creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
+    def add_new_user(self):
+        wd = self.app.wd
+        # переход на страницу создания контакта
+        wd.find_element_by_link_text("add new").click()
 
     def delete_first_user(self):
         wd = self.app.wd
         # select first user
         wd.find_element_by_name("selected[]").click()
-        #submit deletion
+        # submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+
+    def count(self):
+        wd = self.app.wd
+        return len(wd.find_elements_by_name("selected[]"))
