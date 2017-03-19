@@ -25,8 +25,8 @@ class UsersHelper:
 
     def add_new_user(self):
         wd = self.app.wd
-        # переход на страницу создания контакта
-        wd.find_element_by_link_text("add new").click()
+        if not (wd.current_url.endswith("/edit.php") and len(wd.find_elements_by_name("firstname")) > 0):
+            wd.find_element_by_link_text("add new").click()
 
     def delete_first_user(self):
         wd = self.app.wd
