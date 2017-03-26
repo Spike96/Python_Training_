@@ -24,6 +24,7 @@ class UsersHelper:
         wd.find_element_by_name("email").send_keys(users.email)
         # submit user creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.user_cache = None
 
     def add_new_user(self):
         wd = self.app.wd
@@ -37,16 +38,20 @@ class UsersHelper:
         # submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+        self.user_cache = None
 
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
 
+    user_cache = None
+
     def get_users_list(self):
-        wd = self.app.wd
-        users = []
-        for element in wd.find_elements_by_css_selector('[name="entry"]'):
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            users.append(Users(f_name=text, l_name=text, nickname=text, email=text, id=id))
-        return users
+        if self.user_cache is None:
+            wd = self.app.wd
+            self.user_cache = []
+            for element in wd.find_elements_by_css_selector('[name="entry"]'):
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.user_cache.append(Users(f_name=text, l_name=text, nickname=text, email=text, id=id))
+        return list(self.user_cache)
