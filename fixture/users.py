@@ -32,9 +32,12 @@ class UsersHelper:
             wd.find_element_by_link_text("add new").click()
 
     def delete_first_user(self):
+        self.delete_user_by_index(0)
+
+    def delete_user_by_index(self, index):
         wd = self.app.wd
-        # select first user
-        wd.find_element_by_name("selected[]").click()
+        # select some user
+        wd.find_elements_by_name("selected[]")[index].click()
         # submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
