@@ -5,8 +5,8 @@ from model.users import Users
 
 def test_add_user(app):
     old_users = app.users.get_users_list()
-    users = Users(f_name="Vasya", l_name="Vasko", nickname="qwerty",
-                  email="vasya@mail.com", homephone=1234567890, address="somewhere")
+    users = Users(firstname="Vasya", lastname="Vasko", email="vasya@mail.com",
+                  homephone=12345, workphone=123456, mobilephone=1234567, address="somewhere")
     app.users.create(users)
     assert len(old_users) + 1 == app.users.count()
     new_users = app.users.get_users_list()
