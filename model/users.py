@@ -2,12 +2,14 @@ from sys import maxsize
 
 class Users:
 
-    def __init__(self, f_name, l_name, nickname, email, id=None):
+    def __init__(self, f_name, l_name, nickname, email, homephone, address, id=None):
         self.f_name = f_name
         self.l_name = l_name
         self.nickname = nickname
         self.email = email
         self.id = id
+        self.homephone = homephone
+        self.address = address
 
     def __repr__(self):
         return "%s:%s:%s" % (self.id, self.f_name, self.l_name)

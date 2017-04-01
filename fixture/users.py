@@ -19,6 +19,12 @@ class UsersHelper:
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(users.nickname)
+        wd.find_element_by_name("address").click()
+        wd.find_element_by_name("address").clear()
+        wd.find_element_by_name("address").send_keys(users.address)
+        wd.find_element_by_name("home").click()
+        wd.find_element_by_name("home").clear()
+        wd.find_element_by_name("home").send_keys(users.homephone)
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(users.email)
@@ -56,5 +62,6 @@ class UsersHelper:
             for element in wd.find_elements_by_css_selector('[name="entry"]'):
                 text = element.text
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.user_cache.append(Users(f_name=text, l_name=text, nickname=text, email=text, id=id))
+                self.user_cache.append(Users(f_name=text, l_name=text, nickname=text,
+                                             email=text, homephone=text, address=text, id=id))
         return list(self.user_cache)
