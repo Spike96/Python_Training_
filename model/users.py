@@ -17,7 +17,8 @@ class Users:
         self.id = id
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.id, self.firstname, self.lastname)
+        return "%s:%s:%s;%s;%s;%s;%s;%s" % (self.id, self.firstname, self.lastname, self.address, self.homephone,
+                                            self.workphone, self.mobilephone, self.email)
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname, \
