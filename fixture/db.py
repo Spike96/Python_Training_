@@ -1,5 +1,6 @@
 import pymysql.cursors
 from model.group import Group
+from model.users import Users
 
 
 class DbFixture:
@@ -9,8 +10,9 @@ class DbFixture:
         self.name = name
         self.user = user
         self.password = password
-        self.connection = pymysql.connect(host=host, database=name, user=user, password=password)
-        self.connection.autocommit = True
+        self.connection = pymysql.connect(host=host, database=name, user=user, password=password,
+                                          autocommit = True)
+        # self.connection.autocommit = True
 
     def get_group_list(self):
         list = []
@@ -23,6 +25,20 @@ class DbFixture:
         finally:
             cursor.close()
         return list
+
+    def get_users_list(self):
+        list_u = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id, firstname, lastname, email, address from addressbook")
+            for row in cursor:
+                (id, firstname, lastname, email, address) = row
+                list_u.append(Users(id=id, firstname=firstname, lastname=lastname,
+                                    email=email, address=address))
+        finally:
+            cursor.close()
+        return list_u
+
 
     def destroy(self):
         self.connection.close()

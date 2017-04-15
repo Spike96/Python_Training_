@@ -22,12 +22,11 @@ import pytest
 
 
 # @pytest.mark.parametrize("users", testdata, ids=[str(x) for x in testdata])
-def test_add_user(app, json_users):
+def test_add_user(app, db, json_users):
     users = json_users
-    old_users = app.users.get_users_list()
+    old_users = db.get_users_list()
     app.users.create(users)
-    assert len(old_users) + 1 == app.users.count()
-    new_users = app.users.get_users_list()
+    new_users = db.get_users_list()
     old_users.append(users)
     assert sorted(old_users, key=Users.id_or_max) == sorted(new_users, key=Users.id_or_max)
 

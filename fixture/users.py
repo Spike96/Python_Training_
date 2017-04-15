@@ -53,6 +53,22 @@ class UsersHelper:
         wd.switch_to_alert().accept()
         self.user_cache = None
 
+    def delete_user_by_id(self, id):
+        wd = self.app.wd
+        self.select_user_by_id(id)
+        # select some user
+        # wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        # submit deletion
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        self.user_cache = None
+
+    def select_user_by_id(self, id):
+        wd = self.app.wd
+        # wd.find_element_by_css_selector("input[id='%d']" % id).click()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
+
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
