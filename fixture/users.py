@@ -68,7 +68,6 @@ class UsersHelper:
         # wd.find_element_by_css_selector("input[id='%d']" % id).click()
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
-
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
