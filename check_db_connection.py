@@ -1,8 +1,8 @@
 
-from fixture.db import DbFixture
+from fixture.orm import ORMFixture
 
-db = DbFixture(host="127.0.0.1", name="addressbook",
-                                     user="root", password="")
+db = ORMFixture(host="127.0.0.1", name="addressbook",
+                user="root", password="")
 
 '''try:
     groups = db.get_group_list()
@@ -10,7 +10,7 @@ db = DbFixture(host="127.0.0.1", name="addressbook",
         print(group)
     print(len(groups))
 finally:
-    db.destroy()'''
+    pass # db.destroy()'''
 
 try:
     users = db.get_users_list()
@@ -18,4 +18,4 @@ try:
         print(user)
     print(len(users))
 finally:
-    db.destroy()
+    pass # db.destroy()
