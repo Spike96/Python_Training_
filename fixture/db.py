@@ -44,10 +44,10 @@ class DbFixture:
         list_u_g = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, group_id from address_in_groups where deprecated= '0000-00-00 00:00:00'")
+            cursor.execute("select id from address_in_groups where deprecated= '0000-00-00 00:00:00'")
             for row in cursor:
-                (id, group_id) = row
-                list_u_g.append(Group(id=str(id), group_id=str(group_id)))
+                id = row
+                list_u_g.append(Users(id=str(id)))
         finally:
             cursor.close()
         return list_u_g
