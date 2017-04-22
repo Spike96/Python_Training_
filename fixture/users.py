@@ -42,7 +42,7 @@ class UsersHelper:
             wd.find_element_by_link_text("add new").click()
 
 
-    def add_user_to_group(self, id):
+    def add_user_to_group(self):
         wd = self.app.wd
         # select user in list
         wd.find_element_by_name("selected[]").click()
@@ -65,6 +65,18 @@ class UsersHelper:
         # go to page with group
         wd.find_element_by_partial_link_text("group page").click()
         self.user_cache = None'''
+
+    def del_user_from_group(self):
+        wd = self.app.wd
+        # select group
+        wd.find_element_by_xpath("//form[@id='right']/select//option[3]").click
+        # select user
+        wd.find_element_by_name("selected[]").click
+        # press "delete"
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click
+        wd.switch_to_alert().accept()
+        wd.find_element_by_xpath("//div[@class='msgbox'").text("Record successful deleted")
+        self.user_cache = None
 
     def delete_first_user(self):
         self.delete_user_by_index(0)
