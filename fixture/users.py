@@ -41,6 +41,31 @@ class UsersHelper:
         if not (wd.current_url.endswith("/edit.php") and len(wd.find_elements_by_name("firstname")) > 0):
             wd.find_element_by_link_text("add new").click()
 
+
+    def add_user_to_group(self, id):
+        wd = self.app.wd
+        # select user in list
+        wd.find_element_by_name("selected[]").click()
+        # add user to the first group
+        wd.find_element_by_name("add").click()
+        # go to page with group
+        wd.find_element_by_partial_link_text("group page").click()
+        self.user_cache = None
+
+
+    '''def add_user_to_group(self):
+        wd = self.app.wd
+        # select user in list
+        wd.find_element_by_name("selected[]").click()
+        # choose a group
+        wd.find_element_by_xpath("//div[@class='right']//select[normalize-space(.)='name nameRWJH~Uq4']//option[2]").click
+        # add user to group
+        # wd.find_element_by_xpath("//div[@class='right']/input").click()
+        wd.find_element_by_name("add").click()
+        # go to page with group
+        wd.find_element_by_partial_link_text("group page").click()
+        self.user_cache = None'''
+
     def delete_first_user(self):
         self.delete_user_by_index(0)
 
@@ -130,6 +155,8 @@ class UsersHelper:
         mobilephone = re.search("M: (.*)", text).group(1)
         workphone = re.search("W: (.*)", text).group(1)
         return Users(homephone=homephone, workphone=workphone, mobilephone=mobilephone)
+
+
 
 
 
