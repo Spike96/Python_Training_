@@ -5,6 +5,7 @@ from model.group import Group
 from model.users import Users
 from pymysql.converters import encoders, decoders, convert_mysql_timestamp
 
+
 class ORMFixture:
 
     db = Database()

@@ -1,3 +1,4 @@
+from selenium.webdriver.support.ui import Select
 from model.users import Users
 import re
 
@@ -41,42 +42,30 @@ class UsersHelper:
         if not (wd.current_url.endswith("/edit.php") and len(wd.find_elements_by_name("firstname")) > 0):
             wd.find_element_by_link_text("add new").click()
 
-
-    def add_user_to_group(self):
+    def add_user_to_group(self, id, group_id):
         wd = self.app.wd
-        # select user in list
-        wd.find_element_by_name("selected[]").click()
-        # add user to the first group
-        wd.find_element_by_name("add").click()
-        # go to page with group
-        wd.find_element_by_partial_link_text("group page").click()
-        self.user_cache = None
+        self.app.open_home_page()
+        self.select_user_by_id(id)
+        wd.find_element_by_name("to_group").click()
+        select = Select(wd.find_element_by_name("to_group"))
+        select.select_by_value(group_id)
+        wd.find_element_by_xpath('//input[@name="add"]').click()
+        wd.find_element_by_partial_link_text('group page').click()
+        self.contact_cache = None
 
-
-    '''def add_user_to_group(self):
+    def sort_by_group_by_id(self, group_id):
         wd = self.app.wd
-        # select user in list
-        wd.find_element_by_name("selected[]").click()
-        # choose a group
-        wd.find_element_by_xpath("//div[@class='right']//select[normalize-space(.)='name nameRWJH~Uq4']//option[2]").click
-        # add user to group
-        # wd.find_element_by_xpath("//div[@class='right']/input").click()
-        wd.find_element_by_name("add").click()
-        # go to page with group
-        wd.find_element_by_partial_link_text("group page").click()
-        self.user_cache = None'''
+        select = Select(wd.find_element_by_xpath('//select[@name="group"]'))
+        select.select_by_value(group_id)
 
-    def del_user_from_group(self):
+    def delete_user_from_group(self, group_id):
         wd = self.app.wd
-        # select group
-        wd.find_element_by_xpath("//form[@id='right']/select//option[3]").click
-        # select user
-        wd.find_element_by_name("selected[]").click
-        # press "delete"
-        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click
-        wd.switch_to_alert().accept()
-        wd.find_element_by_xpath("//div[@class='msgbox'").text("Record successful deleted")
-        self.user_cache = None
+        select = Select(wd.find_element_by_name("group"))
+        select.select_by_value(group_id)
+        wd.find_element_by_xpath('//input[@name="selected[]').click()
+        wd.find_element_by_xpath('//input[@name="remove"]').click()
+        wd.find_element_by_partial_link_text('group page').click()
+        self.contact_cache = None
 
     def delete_first_user(self):
         self.delete_user_by_index(0)
@@ -103,7 +92,8 @@ class UsersHelper:
 
     def select_user_by_id(self, id):
         wd = self.app.wd
-        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_id(id).click()
+        # wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def count(self):
         wd = self.app.wd
@@ -128,6 +118,21 @@ class UsersHelper:
                                              all_emails_from_home_page= all_emails,
                                              all_phones_from_home_page=all_phones, id=id, address=address))
         return list(self.user_cache)
+
+
+    def get_user_info_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_element_by_xpath('//td/*[@id="' + id + '"]/../..')
+        cells = row.find_elements_by_tag_name("td")
+        id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+        firstname = cells[2].text
+        lastname = cells[1].text
+        address = cells[3].text
+        all_emails = cells[4].text
+        all_phones = cells[5].text
+        return Users(id=id, firstname=firstname, lastname=lastname, address=address,
+                       all_emails_from_home_page=all_emails) #, all_phones_from_home_page=all_phones)
 
 
     def open_contact_to_edit_by_index(self, index):

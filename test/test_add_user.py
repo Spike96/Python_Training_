@@ -33,10 +33,6 @@ def test_add_user(app, db, json_users):
 
 
 
-
-
-
-
 '''def test_add_empty_user(app):
     old_users = app.users.get_users_list()
     users = Users(f_name="", l_name="", nickname="", email="", homephone="", address="")

@@ -40,17 +40,33 @@ class DbFixture:
             cursor.close()
         return list_u
 
-    def get_users_in_group(self):
-        list_u_g = []
-        cursor = self.connection.cursor()
-        try:
-            cursor.execute("select id from address_in_groups where deprecated= '0000-00-00 00:00:00'")
-            for row in cursor:
-                id = row
-                list_u_g.append(Users(id=str(id)))
-        finally:
-            cursor.close()
-        return list_u_g
-
     def destroy(self):
         self.connection.close()
+
+
+    # def get_users_in_group(self):
+    #     list_u_g = []
+    #     cursor = self.connection.cursor()
+    #     try:
+    #         cursor.execute("select id from address_in_groups where deprecated= '0000-00-00 00:00:00'")
+    #         for row in cursor:
+    #             id = row
+    #             list_u_g.append(Users(id=str(id)))
+    #     finally:
+    #         cursor.close()
+    #     return list_u_g
+    #
+    # def get_users_not_in_group(self):
+    #     list_u_g = []
+    #     cursor = self.connection.cursor()
+    #     try:
+    #         cursor.execute("select id, group_id from address_in_groups where deprecated= '0000-00-00 00:00:00'")
+    #         for row in cursor:
+    #             (id, group_id) = row
+    #             list_u_g.append(Group(id=str(id), group_id=str(group_id)))
+    #     finally:
+    #         cursor.close()
+    #     return list_u_g
+    #
+    #
+
