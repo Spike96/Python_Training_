@@ -3,7 +3,6 @@
 from model.users import Users
 import random
 
-
 def test_delete_some_user(app, db, check_ui):
     if len(db.get_users_list()) == 0:
         app.users.create(Users(firstname="somebody", lastname="someone", email="vasya@mail.com",
