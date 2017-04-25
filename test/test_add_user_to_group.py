@@ -13,7 +13,7 @@ def test_add_user_to_group(app):
         app.users.create(Users(firstname="somebody", lastname="someone", email="vasya@mail.com",
                                homephone=12345, workphone=123456, mobilephone=1234567, address="somewhere"))
     elif len(db.get_group_list()) == 0:
-        app.create(Group(name="New group for user"))
+        app.group.create(Group(name="New group for user"))
     else:
         old_user = db.get_users_list()
         old_group = db.get_group_list()
@@ -26,12 +26,9 @@ def test_add_user_to_group(app):
                 random_user = random.choice(new_user)
                 id = random_user.id
                 app.users.add_user_to_group(id, group_id)
-
-
-            # app.users.sort_by_group_by_id(group_id)
-            # ui_info = [app.users.get_user_info_by_id(id)]
-            # db_info = db.get_users_in_group(Group(id=str(group_id)))
-            # assert ui_info == db_info
+                ui_list = [app.users.get_user_info_by_id(id)]
+                db_list = db.get_users_in_group(group)
+                assert sorted(ui_list, key=Group.id_or_max) == sorted(db_list, key=Group.id_or_max)
 
 
 
