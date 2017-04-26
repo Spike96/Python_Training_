@@ -60,6 +60,7 @@ class UsersHelper:
 
     def delete_user_from_group(self):
         wd = self.app.wd
+        wd.find_element_by_name("group").click()
         select = Select(wd.find_element_by_name("group"))
         select.select_by_value("10")
         wd.find_element_by_xpath('//input[@name="selected[]').click()

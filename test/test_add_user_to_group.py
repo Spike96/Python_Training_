@@ -25,9 +25,10 @@ def test_add_user_to_group(app):
                 new_user = db.get_users_not_in_group(group)
                 random_user = random.choice(new_user)
                 id = random_user.id
+                ui_list = db.get_users_in_group(group)
                 app.users.add_user_to_group(id, group_id)
-                ui_list = [app.users.get_user_info_by_id(id)]
                 db_list = db.get_users_in_group(group)
+                ui_list.append(random_user)
                 assert sorted(ui_list, key=Group.id_or_max) == sorted(db_list, key=Group.id_or_max)
 
 
