@@ -58,10 +58,10 @@ class UsersHelper:
         select = Select(wd.find_element_by_xpath('//select[@name="group"]'))
         select.select_by_value(group_id)
 
-    def delete_user_from_group(self, group_id):
+    def delete_user_from_group(self):
         wd = self.app.wd
         select = Select(wd.find_element_by_name("group"))
-        select.select_by_value(group_id)
+        select.select_by_value("10")
         wd.find_element_by_xpath('//input[@name="selected[]').click()
         wd.find_element_by_xpath('//input[@name="remove"]').click()
         wd.find_element_by_partial_link_text('group page').click()
@@ -135,23 +135,23 @@ class UsersHelper:
                      all_emails_from_home_page=all_emails, all_phones_from_home_page=all_phones)
 
 
-    def open_contact_to_edit_by_index(self, index):
+    def open_user_to_edit_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
-    def open_contact_view_by_index(self, index):
+    def open_user_view_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 
-    def get_contact_info_from_edit_page(self, index):
+    def get_user_info_from_edit_page(self, index):
         wd = self.app.wd
-        self.open_contact_to_edit_by_index(index)
+        self.open_user_to_edit_by_index(index)
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
         id = wd.find_element_by_name("id").get_attribute("value")
@@ -164,9 +164,9 @@ class UsersHelper:
                      homephone=homephone, workphone=workphone, mobilephone=mobilephone)
 
 
-    def get_users_from_view_page(self, index):
+    def get_user_from_view_page(self, index):
         wd = self.app.wd
-        self.open_contact_view_by_index(index)
+        self.open_user_view_by_index(index)
         text = wd.find_element_by_id("content").text
         homephone = re.search("H: (.*)", text).group(1)
         mobilephone = re.search("M: (.*)", text).group(1)
