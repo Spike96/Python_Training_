@@ -1,0 +1,89 @@
+{
+  "uid" : "d4cde384904db72",
+  "name" : "test_add_group[None:nameH;header=h75XsEY^X;footer] oa2-1Ne207?]",
+  "title" : "Test add group [None:nameH;header=h75XsEY^X;footer] oa2-1Ne207?]",
+  "time" : {
+    "start" : 1493983473094,
+    "stop" : 1493983474179,
+    "duration" : 1085
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 3
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "fd47a9e5513ef242",
+    "name" : "test.test_add_group",
+    "title" : "Test add group"
+  },
+  "steps" : [ {
+    "name" : "Given a group list",
+    "title" : "Given a group list",
+    "time" : {
+      "start" : 1493983473149,
+      "stop" : 1493983473149,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "When I add a group None:nameH;header=h75XsEY^X;footer] oa2-1Ne207? to the list",
+    "title" : "When I add a group None:nameH;header=h75XsEY^X;footer] oa2-1Ne207? to the list",
+    "time" : {
+      "start" : 1493983473149,
+      "stop" : 1493983474174,
+      "duration" : 1025
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Then the new group list is equal to the old list with the added group",
+    "title" : "Then the new group list is equal to the old list with the added group",
+    "time" : {
+      "start" : 1493983474174,
+      "stop" : 1493983474179,
+      "duration" : 5
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "thread",
+    "value" : "7872-MainThread"
+  }, {
+    "name" : "host",
+    "value" : "fintegro-ПК"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "test.test_add_group"
+  } ],
+  "parameters" : [ ]
+}

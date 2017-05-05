@@ -1,0 +1,29 @@
+{
+  "defectsList" : [ {
+    "title" : "Product defects",
+    "status" : "FAILED",
+    "defects" : [ {
+      "uid" : "b69f54bdef39b745",
+      "failure" : {
+        "message" : "AssertionError: assert [16:name*wx X...Wy1 _;!v, ...] == [16:name*wx X|...Wy1 _;!v, ...]\n  Left contains more items, first extra item: None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I\n  Use -v to get the full diff",
+        "stackTrace" : "app = <fixture.application.Application object at 0x0358F770>\ndb = <fixture.db.DbFixture object at 0x03679410>\njson_groups = None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I\n\n    def test_add_group(app, db, json_groups):\n        group = json_groups\n        with pytest.allure.step('Given a group list'):\n            old_groups = db.get_group_list()\n        with pytest.allure.step('When I add a group %s to the list' % group):\n            app.group.create(group)\n        with pytest.allure.step('Then the new group list is equal to the old list with the added group'):\n            new_groups = db.get_group_list()\n            old_groups.append(group)\n>           assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE           assert [16:name*wx X...Wy1 _;!v, ...] == [16:name*wx X|...Wy1 _;!v, ...]\nE             Left contains more items, first extra item: None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I\nE             Use -v to get the full diff\n\ntest\\test_add_group.py:16: AssertionError"
+      },
+      "testCases" : [ {
+        "uid" : "aa4d729356b6b6bb",
+        "name" : "test_add_group[None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I]",
+        "title" : "Test add group [None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I]",
+        "time" : {
+          "start" : 1493983466837,
+          "stop" : 1493983467917,
+          "duration" : 1080
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  }, {
+    "title" : "Test defects",
+    "status" : "BROKEN",
+    "defects" : [ ]
+  } ]
+}

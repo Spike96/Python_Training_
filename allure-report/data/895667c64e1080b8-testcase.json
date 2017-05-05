@@ -1,0 +1,44 @@
+{
+  "uid" : "895667c64e1080b8",
+  "name" : "test_add_group[None:name!? G l2 ;header1dvr81gVeM1O;footercl;kkT]",
+  "title" : "Test add group [None:name!? G l2 ;header1dvr81gVeM1O;footercl;kkT]",
+  "time" : {
+    "start" : 1493982238221,
+    "stop" : 1493982239181,
+    "duration" : 960
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "84c2040c58bad703",
+    "name" : "test.test_add_group",
+    "title" : "Test add group"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "fintegro-ПК"
+  }, {
+    "name" : "thread",
+    "value" : "5700-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "test.test_add_group"
+  } ],
+  "parameters" : [ ]
+}

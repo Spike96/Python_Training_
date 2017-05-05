@@ -90,3 +90,5 @@ ENV/
 .idea/workspace.xml
 *.xml
 .idea/Python_Training_.iml
+*.xml
+.idea/Python_Training_.iml

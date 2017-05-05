@@ -1,0 +1,59 @@
+{
+  "hash" : "e7105c43ada45c9f6e0006854ef1a1d95249231d",
+  "plugins" : {
+    "total" : {
+      "statistic" : {
+        "total" : 11,
+        "passed" : 10,
+        "pending" : 0,
+        "canceled" : 0,
+        "failed" : 1,
+        "broken" : 0
+      },
+      "time" : {
+        "start" : 1493983432487,
+        "stop" : 1493983482063,
+        "duration" : 49576
+      }
+    },
+    "defects" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "count" : 1,
+        "uid" : "b69f54bdef39b745",
+        "message" : "AssertionError: assert [16:name*wx X...Wy1 _;!v, ...] == [16:name*wx X|...Wy1 _;!v, ...]\n  Left contains more items, first extra item: None:name\"a.N+z8;header@gU^\";'&#;footer)-D= Cv$@[>`n I\n  Use -v to get the full diff",
+        "status" : "FAILED"
+      } ]
+    },
+    "xunit" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "uid" : "fd47a9e5513ef242",
+        "title" : "Test add group",
+        "statistic" : {
+          "total" : 11,
+          "passed" : 10,
+          "pending" : 0,
+          "canceled" : 0,
+          "failed" : 1,
+          "broken" : 0
+        }
+      } ]
+    },
+    "behaviors" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "title" : "Without feature",
+        "statistic" : {
+          "total" : 11,
+          "passed" : 10,
+          "pending" : 0,
+          "canceled" : 0,
+          "failed" : 1,
+          "broken" : 0
+        }
+      } ]
+    },
+    "environment" : [ ]
+  }
+}
